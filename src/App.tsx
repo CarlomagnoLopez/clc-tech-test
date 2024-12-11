@@ -2,9 +2,9 @@ import './App.css';
 import MatchGame from './components/MatchGame';
 
 const data = {
-  germany: "berlin",
-  germany1: "berlin1",
-  germany2: "berlin2"
+  "kgermany": "vberlin",
+  "kgermany1": "vberlin1",
+  "kgermany2": "vberlin2"
 }
 
 function App() {
