@@ -5,7 +5,8 @@ const data = {
   "Peru": "Lima",
   "Colombia": "Bogota",
   "Ecuador": "Quito",
-  "Chile": "Santiago"
+  "Chile": "Santiago",
+  "Brasil": "Brasilia",
 }
 
 function App() {
