@@ -13,15 +13,29 @@ const MatchGame: FC<ChildProps> = ({ data }) => {
     const [currentValue, setCurrentValue]: any = useState('')
     const [errors, setErrors]: any = useState(0)
     const [success, setSuccess]: any = useState(0)
+    const [final, setFinal]: any = useState(false)
+    const [finalMessage, setFinalMessage]: any = useState(false)
     useEffect(() => {
         if (errors !== 0) {
-            // console.log("errores")
             console.log(errors)
         }
         if (success !== 0) {
-            // console.log("completados")
             console.log(success)
         }
+
+        if (Object.entries(itemsData).length === errors) {
+            setFinal(true)
+            setFinalMessage('Has sido derrotado')
+        }
+
+        if (Object.entries(itemsData).length === success) {
+            setFinal(true)
+            setFinalMessage('Has ganado')
+
+        }
+
+        // console.log(Object.entries(itemsData).length)
+
     }, [errors, success])
 
     useEffect(() => {
@@ -73,54 +87,62 @@ const MatchGame: FC<ChildProps> = ({ data }) => {
     return (
 
         <div className="containerGame">
-            <div className="containerRecords">
-                <div>
-                    Completadas: {success}
-                </div>
-                <div>
-                    Erroneos: {errors}
-                </div>
-            </div>
-            <div className="containerItems">
-                {Object.entries(itemsData).map((item: any, index: number) => {
-                    return (
-                        <span
-                            className={`initialClass country ${item[0]}`}
-                            onClick={(e) => {
-                                if (targetValue === '') {
-                                    setTargetValue(e.target)
-                                } else {
-                                    setCurrentValue(e.target)
-                                }
-                            }
-                            }
-                            key={`${item[0]}-${index}`}
-                            id={item[1]} >
-                            {item[0]}
-                        </span>
-                    )
-                })}
-                {Object.entries(itemsData).map((item: any, index: number) => {
-                    return (
-                        <span
-                            className={`initialClass city ${item[1]}`}
-                            onClick={(e) => {
-                                if (targetValue === '') {
-                                    setTargetValue(e.target)
-                                } else {
-                                    setCurrentValue(e.target)
-                                }
-                            }
-                            }
-                            key={`${item[1]}-${index}`}
-                            id={item[0]} >
-                            {item[1]}
-                        </span>
-                    )
-                })}
-            </div>
 
+            {!final &&
+                <div className="containerRecords">
+                    <div>
+                        Completadas: {success}
+                    </div>
+                    <div>
+                        Erroneos: {errors}
+                    </div>
+                </div>
+            }
 
+            {!final &&
+                <div className="containerItems">
+                    {Object.entries(itemsData).map((item: any, index: number) => {
+                        return (
+                            <span
+                                className={`initialClass country ${item[0]}`}
+                                onClick={(e) => {
+                                    if (targetValue === '') {
+                                        setTargetValue(e.target)
+                                    } else {
+                                        setCurrentValue(e.target)
+                                    }
+                                }
+                                }
+                                key={`${item[0]}-${index}`}
+                                id={item[1]} >
+                                {item[0]}
+                            </span>
+                        )
+                    })}
+                    {Object.entries(itemsData).map((item: any, index: number) => {
+                        return (
+                            <span
+                                className={`initialClass city ${item[1]}`}
+                                onClick={(e) => {
+                                    if (targetValue === '') {
+                                        setTargetValue(e.target)
+                                    } else {
+                                        setCurrentValue(e.target)
+                                    }
+                                }
+                                }
+                                key={`${item[1]}-${index}`}
+                                id={item[0]} >
+                                {item[1]}
+                            </span>
+                        )
+                    })}
+                </div>
+            }
+            {final &&
+                <div>{finalMessage}</div>
+
+            }
         </div>
     )
 };
