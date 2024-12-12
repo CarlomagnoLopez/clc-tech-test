@@ -14,12 +14,16 @@ body {
   border-style: solid;
   color: black;
   margin: 10px;
+  border-radius: 10px;
+  border-color: black;
   /* pointer-events: all; */
 }
 
 .active {
-  background-color: blue;
+  background-color: #0000ff;
   pointer-events: none;
+  border-color: #0000ff;
+
   color: white;
 }
 

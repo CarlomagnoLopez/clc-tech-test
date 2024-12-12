@@ -23,7 +23,7 @@ const MatchGame: FC<ChildProps> = ({ data }) => {
             console.log(success)
         }
 
-        if (Object.entries(itemsData).length === errors) {
+        if (errors === 3) {
             setFinal(true)
             setFinalMessage('Has sido derrotado')
         }
@@ -72,11 +72,6 @@ const MatchGame: FC<ChildProps> = ({ data }) => {
     }, [targetValue, currentValue]);
 
     const validatePair = () => targetValue.id === currentValue.textContent;
-
-
-
-
-    // }
 
 
     const getRandomInt = (max: number) => {
