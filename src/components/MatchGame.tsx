@@ -34,12 +34,24 @@ const MatchGame: FC<ChildProps> = ({ data }) => {
         if (currentValue !== '' && currentValue.classList.value.indexOf('active') === -1) {
             currentValue.classList.add('active');
             validatePair() ? setSuccess(success + 1) : setErrors(errors + 1);
-            setTimeout(() => {
-                targetValue.classList.remove('active');
-                currentValue.classList.remove('active');
-                setTargetValue('')
-                setCurrentValue('')
-            }, 1000);
+
+            targetValue.classList.remove('active');
+            currentValue.classList.remove('active');
+            if (validatePair()) {
+                targetValue.classList.add('success');
+                currentValue.classList.add('success');
+            } else {
+                targetValue.classList.add('error');
+                currentValue.classList.add('error');
+                setTimeout(() => {
+                    targetValue.classList.remove('error');
+                    currentValue.classList.remove('error');
+                }, 500);
+            }
+
+            setTargetValue('')
+            setCurrentValue('')
+
 
         }
 
