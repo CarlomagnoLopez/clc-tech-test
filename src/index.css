@@ -7,14 +7,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .initialClass {
+  background-color: gray;
   cursor: pointer;
   padding: 10px;
   border-style: solid;
+  color: black;
   margin: 10px;
+  /* pointer-events: all; */
 }
+
+.active {
+  background-color: blue;
+  pointer-events: none;
+  color: white;
+}
+
+.containerGame {
+  height: 50vh;
+  /* width: 70vh; */
+}
+
+.containerRecords{
+  height: 20vh;
+}
+
